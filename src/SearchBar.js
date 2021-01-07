@@ -15,13 +15,10 @@ export default class SearchBar extends Component {
     }
 
     async handleChange(evt) {
-        console.log('changed');
-
         await this.setState({
             searchTerm: evt.target.value
         })
         const response = await axios.get(`${omdbApiUrl}s=${this.state.searchTerm}&type=movie`)
-        console.log(response)
         this.props.refreshMovies(response)
     }
 
