@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './SearchBar.css'
+import './styles/SearchBar.css'
 import axios from "axios"
 
 const omdbApiUrl = "http://www.omdbapi.com/?apikey=8b01dc14&";
@@ -19,21 +19,24 @@ export default class SearchBar extends Component {
             searchTerm: evt.target.value
         })
         const response = await axios.get(`${omdbApiUrl}s=${this.state.searchTerm}&type=movie`)
-        this.props.refreshMovies(response)
+        this.props.refreshMovies(response, this.state.searchTerm)
     }
 
     render() {
         return (
-            <form className="SearchBar">
+            <div className="form-group has-search border container w-50 SearchBar">
                 <label htmlFor='searchTerm'>Movie title</label>
+                <span className="fa fa-search form-control-feedback"></span>
                 <input
+                    type="text"
+                    className="form-control"
                     id="searchTerm"
                     name="searchTerm"
                     placeholder="Search"
                     value={this.state.searchTerm}
                     onChange={this.handleChange}
                 />
-            </form>
+            </div>
         )
     }
 }

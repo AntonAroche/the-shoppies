@@ -1,5 +1,5 @@
-import './App.css';
 import TheShoppies from './TheShoppies';
+import './styles/App.css'
 
 function App() {
   return (

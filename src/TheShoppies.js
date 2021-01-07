@@ -2,18 +2,22 @@ import React, { Component } from 'react'
 import SearchBar from './SearchBar'
 import Movie from './Movie'
 import Nomination from './Nomination'
+import './styles/TheShoppies.css'
 
 export default class TheShoppies extends Component {
     state = {
+        searchTerm: "",
         movies: [],
         nominations: []
     }
 
-    refreshMovies = response => {
+    refreshMovies = (response, searchTerm) => {
+        console.log(response)
         const data = response.data
 
         this.setState({
-            movies: data.Response !== "False" ? data.Search : []
+            movies: data.Response !== "False" ? data.Search : [],
+            searchTerm: searchTerm
         })
     }
 
@@ -58,14 +62,25 @@ export default class TheShoppies extends Component {
             )
         })
 
+        console.log('movies', this.state.movies)
         return (
             <div className="TheShoppies">
                 <header className="App-header">
                     The Shoppies
                 </header>
                 <SearchBar refreshMovies={this.refreshMovies} />
-                <ul>{movieList}</ul>
-                <ul>{nominatedMovies}</ul>
+                <div class="list-container">
+                    <div className="border movie-list">
+                        <h5 class="movie-list-title">
+                            {this.state.movies.length === 0 ? "Results" : `Results for "${this.state.searchTerm}"`}
+                        </h5>
+                        <ul>{movieList}</ul>
+                    </div>
+                    <div className="border movie-list">
+                        <h5 class="movie-list-title">Nominations</h5>
+                        <ul>{nominatedMovies}</ul>
+                    </div>
+                </div>
             </div>
         )
     }
