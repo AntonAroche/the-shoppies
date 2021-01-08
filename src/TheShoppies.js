@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import SearchBar from './SearchBar'
 import Movie from './Movie'
-import Nomination from './Nomination'
 import './styles/TheShoppies.css'
 
 export default class TheShoppies extends Component {
@@ -12,7 +11,6 @@ export default class TheShoppies extends Component {
     }
 
     refreshMovies = (response, searchTerm) => {
-        console.log(response)
         const data = response.data
 
         this.setState({
@@ -44,7 +42,9 @@ export default class TheShoppies extends Component {
                     id={movie.imdbID}
                     name={movie.Title}
                     year={movie.Year}
+                    imgSrc={movie.Poster}
                     nominated={nominated}
+                    isNomination={false}
                     nominateMovie={this.nominateMovie}
                 />
             )
@@ -52,17 +52,18 @@ export default class TheShoppies extends Component {
 
         const nominatedMovies = this.state.nominations.map(nomination => {
             return (
-                <Nomination
+                <Movie
                     key={nomination.imdbID}
                     id={nomination.imdbID}
                     name={nomination.Title}
                     year={nomination.Year}
+                    imgSrc={nomination.Poster}
+                    isNomination={true}
                     removeNomination={this.removeNomination}
                 />
             )
         })
 
-        console.log('movies', this.state.movies)
         return (
             <div className="TheShoppies">
                 <header className="App-header">

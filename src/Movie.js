@@ -6,15 +6,32 @@ export default class Movie extends Component {
         this.props.nominateMovie(this.props.id)
     }
 
+    handleRemove = () => {
+        this.props.removeNomination(this.props.id)
+    }
+
     render() {
-        const { name, year, nominated } = this.props
+        const { name, year, nominated, isNomination, imgSrc } = this.props
 
         return (
             <div className="Movie">
+
                 <li className="MovieRow">
-                    {name}{" "}
-                    {year}
-                    <button disabled={nominated} onClick={this.handleNomination}>Nominate</button>
+                    <img
+                        src={imgSrc}
+                        alt={''}
+                        className="MoviePoster"
+                    />
+                    <div className="MovieInfo">
+                        <span>{name}</span>
+                        <span>{year}</span>
+                    </div>
+                    {
+                        isNomination ?
+                            <button disabled={nominated} onClick={this.handleRemove}>Remove</button>
+                            :
+                            <button disabled={nominated} onClick={this.handleNomination}>Nominate</button>
+                    }
                 </li>
             </div>
         )

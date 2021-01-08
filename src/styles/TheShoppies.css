@@ -1,3 +1,7 @@
+.TheShoppies {
+    background-color: #004C3F;
+}
+
 .list-container {
     margin: auto;
     width: 60%;
@@ -8,6 +12,7 @@
 
 .movie-list {
     border: 2px solid #f6f6f6;
+    box-shadow: 0 0 2px;
     border-radius: 0.1rem;
     width: 100%;
     margin: 1rem;
