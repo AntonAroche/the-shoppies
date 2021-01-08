@@ -24,7 +24,7 @@ export default class SearchBar extends Component {
 
     render() {
         return (
-            <div className="form-group has-search border container w-50 SearchBar">
+            <div className="form-group has-search container w-50 SearchBar">
                 <label htmlFor='searchTerm'>Movie title</label>
                 <span className="fa fa-search form-control-feedback"></span>
                 <input

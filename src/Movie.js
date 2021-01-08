@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './styles/Movie.css'
 
 export default class Movie extends Component {
     handleNomination = () => {
@@ -10,7 +11,7 @@ export default class Movie extends Component {
 
         return (
             <div className="Movie">
-                <li>
+                <li className="MovieRow">
                     {name}{" "}
                     {year}
                     <button disabled={nominated} onClick={this.handleNomination}>Nominate</button>

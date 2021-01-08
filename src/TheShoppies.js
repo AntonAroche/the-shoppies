@@ -69,16 +69,16 @@ export default class TheShoppies extends Component {
                     The Shoppies
                 </header>
                 <SearchBar refreshMovies={this.refreshMovies} />
-                <div class="list-container">
-                    <div className="border movie-list">
-                        <h5 class="movie-list-title">
+                <div className="list-container">
+                    <div className="movie-list">
+                        <h5 className="movie-list-title">
                             {this.state.movies.length === 0 ? "Results" : `Results for "${this.state.searchTerm}"`}
                         </h5>
-                        <ul>{movieList}</ul>
+                        <ul className="list-group">{movieList}</ul>
                     </div>
-                    <div className="border movie-list">
-                        <h5 class="movie-list-title">Nominations</h5>
-                        <ul>{nominatedMovies}</ul>
+                    <div className="movie-list">
+                        <h5 className="movie-list-title">Nominations</h5>
+                        <ul className="list-group">{nominatedMovies}</ul>
                     </div>
                 </div>
             </div>

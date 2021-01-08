@@ -1,0 +1,17 @@
+.Movie {
+    list-style: none;
+    border: 1px solid #C0F0CF;
+    border-radius: 0.25rem;
+    margin: 0.15rem 0;
+    padding: 0.5rem 1rem;
+    width: auto;
+    color: white;
+}
+
+.MovieRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%
+}
+
