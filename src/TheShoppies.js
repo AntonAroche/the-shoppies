@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import SearchBar from './SearchBar'
 import Movie from './Movie'
 import './styles/TheShoppies.css'
+import { Modal, Button } from 'react-bootstrap'
 
 export default class TheShoppies extends Component {
     state = {
         searchTerm: "",
         movies: [],
-        nominations: []
+        nominations: [],
+        showModal: false
     }
 
     refreshMovies = (response, searchTerm) => {
@@ -24,7 +26,14 @@ export default class TheShoppies extends Component {
 
         this.setState(state => ({
             nominations: [...state.nominations, ...nomination]
-        }))
+        }), () => {
+            if (this.state.nominations.length === 5) {
+                console.log('yes')
+                this.setState({
+                    showModal: true
+                })
+            }
+        })
     }
 
     removeNomination = id => {
@@ -33,9 +42,23 @@ export default class TheShoppies extends Component {
         }))
     }
 
+    handleSubmitModal = () => {
+        this.setState(state => ({
+            showModal: false,
+            nominations: []
+        }))
+    }
+
+    handleCloseModal = () => {
+        this.setState(state => ({
+            showModal: false
+        }))
+    }
+
     render() {
         const movieList = this.state.movies.map(movie => {
             const nominated = this.state.nominations.some(nomination => nomination.imdbID === movie.imdbID)
+            const nominationsFull = this.state.nominations.length === 5
             return (
                 <Movie
                     key={movie.imdbID}
@@ -43,7 +66,7 @@ export default class TheShoppies extends Component {
                     name={movie.Title}
                     year={movie.Year}
                     imgSrc={movie.Poster}
-                    nominated={nominated}
+                    nominated={nominated || nominationsFull}
                     isNomination={false}
                     nominateMovie={this.nominateMovie}
                 />
@@ -82,7 +105,21 @@ export default class TheShoppies extends Component {
                         <ul className="list-group">{nominatedMovies}</ul>
                     </div>
                 </div>
-            </div>
+
+                <Modal show={this.state.showModal} onHide={this.handleCloseModal} animation={false}>
+                    <Modal.Header>
+                        <Modal.Title>You're ready to submit this year's 5 nominations!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={this.handleSubmitModal}>
+                            Submit to the academy
+                        </Button>
+                        <Button variant="secondary" onClick={this.handleCloseModal}>
+                            I want to change my nominations
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </div >
         )
     }
 }
