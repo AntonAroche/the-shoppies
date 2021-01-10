@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './styles/SearchBar.css'
 import axios from "axios"
 
-const omdbApiUrl = "http://www.omdbapi.com/?apikey=8b01dc14&";
+const omdbApiUrl = "https://www.omdbapi.com/?apikey=8b01dc14&";
 
 export default class SearchBar extends Component {
     constructor(props) {
@@ -18,7 +18,12 @@ export default class SearchBar extends Component {
         await this.setState({
             searchTerm: evt.target.value
         })
-        const response = await axios.get(`${omdbApiUrl}s=${this.state.searchTerm}&type=movie`)
+
+        const response = await axios.get(`${omdbApiUrl}s=${this.state.searchTerm}&type=movie`).catch((error) => {
+            alert(`Fetching movies failed: ${error.response}`)
+            console.error(error.response)
+        })
+
         this.props.refreshMovies(response, this.state.searchTerm)
     }
 
@@ -32,7 +37,7 @@ export default class SearchBar extends Component {
                     className="form-control"
                     id="searchTerm"
                     name="searchTerm"
-                    placeholder="Search"
+                    placeholder="Search for a movie to nominate"
                     value={this.state.searchTerm}
                     onChange={this.handleChange}
                 />

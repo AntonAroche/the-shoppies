@@ -14,26 +14,23 @@ export default class Movie extends Component {
         const { name, year, nominated, isNomination, imgSrc } = this.props
 
         return (
-            <div className="Movie">
-
-                <li className="MovieRow">
-                    <img
-                        src={imgSrc}
-                        alt={''}
-                        className="MoviePoster"
-                    />
-                    <div className="MovieInfo">
-                        <span>{name}</span>
-                        <span>{year}</span>
-                    </div>
-                    {
-                        isNomination ?
-                            <button disabled={nominated} onClick={this.handleRemove}>Remove</button>
-                            :
-                            <button disabled={nominated} onClick={this.handleNomination}>Nominate</button>
-                    }
-                </li>
-            </div>
+            <li className="Movie">
+                <img
+                    src={imgSrc}
+                    alt={''}
+                    className="MoviePoster"
+                />
+                <div className="MovieInfo">
+                    <span>{name}</span>
+                    <span>{year}</span>
+                </div>
+                {
+                    isNomination ?
+                        <button disabled={nominated} onClick={this.handleRemove}>Remove</button>
+                        :
+                        <button disabled={nominated} onClick={this.handleNomination}>Nominate</button>
+                }
+            </li>
         )
     }
 }

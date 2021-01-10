@@ -26,20 +26,21 @@ export default class TheShoppies extends Component {
 
         this.setState(state => ({
             nominations: [...state.nominations, ...nomination]
-        }), () => {
-            if (this.state.nominations.length === 5) {
-                console.log('yes')
-                this.setState({
-                    showModal: true
-                })
-            }
-        })
+        }), () => { this.checkOpenModal() })
     }
 
     removeNomination = id => {
         this.setState(state => ({
             nominations: state.nominations.filter((nom) => nom.imdbID !== id)
         }))
+    }
+
+    checkOpenModal = () => {
+        if (this.state.nominations.length === 5) {
+            this.setState({
+                showModal: true
+            })
+        }
     }
 
     handleSubmitModal = () => {
@@ -89,11 +90,11 @@ export default class TheShoppies extends Component {
 
         return (
             <div className="TheShoppies">
-                <header className="App-header">
+                <header className="TheShoppiesHeader">
                     The Shoppies
                 </header>
                 <SearchBar refreshMovies={this.refreshMovies} />
-                <div className="list-container">
+                <div className="MovieListContainer">
                     <div className="movie-list">
                         <h5 className="movie-list-title">
                             {this.state.movies.length === 0 ? "Results" : `Results for "${this.state.searchTerm}"`}

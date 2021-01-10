@@ -3,31 +3,3 @@
   background-color: #004C3F;
   color: #f6f6f6;
 }
-
-.App-header {
-  min-height: 8vh;
-  color: #C0F0CF;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 3vmin);
-}
-
-button {
-  background-color: #C0F0CF;
-  border: 1px solid #C0F0CF;
-  color: #222629;
-  border-radius: 0.25rem !important;
-}
-
-button:hover:enabled {
-  box-shadow: inset 0 0 0 2em #4caf50;
-  border-color: #4caf50;
-  color:white;
-}
-
-button:disabled {
-  background-color: #c6f8d6;
-  color: lightgrey;
-}
