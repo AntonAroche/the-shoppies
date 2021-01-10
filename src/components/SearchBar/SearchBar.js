@@ -22,6 +22,7 @@ export default class SearchBar extends Component {
         const response = await axios.get(`${omdbApiUrl}s=${this.state.searchTerm}&type=movie`).catch((error) => {
             alert(`Fetching movies failed: ${error.response}`)
             console.error(error.response)
+            return;
         })
 
         this.props.refreshMovies(response, this.state.searchTerm)
