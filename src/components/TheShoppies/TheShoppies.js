@@ -3,6 +3,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import Movie from '../Movie/Movie'
 import './TheShoppies.css'
 import { Modal, Button } from 'react-bootstrap'
+import MovieList from '../MovieList/MovieList'
 
 export default class TheShoppies extends Component {
     state = {
@@ -95,16 +96,14 @@ export default class TheShoppies extends Component {
                 </header>
                 <SearchBar refreshMovies={this.refreshMovies} />
                 <div className="MovieListContainer">
-                    <div className="movie-list">
-                        <h5 className="movie-list-title">
-                            {this.state.movies.length === 0 ? "Results" : `Results for "${this.state.searchTerm}"`}
-                        </h5>
-                        <ul className="list-group">{movieList}</ul>
-                    </div>
-                    <div className="movie-list">
-                        <h5 className="movie-list-title">Nominations</h5>
-                        <ul className="list-group">{nominatedMovies}</ul>
-                    </div>
+                    <MovieList
+                        header={this.state.movies.length === 0 ? "Results" : `Results for "${this.state.searchTerm}"`}
+                        movies={movieList}
+                    />
+                    <MovieList
+                        header="Nominations"
+                        movies={nominatedMovies}
+                    />
                 </div>
 
                 <Modal show={this.state.showModal} onHide={this.handleCloseModal} animation={false}>
