@@ -1,5 +1,5 @@
-import TheShoppies from './TheShoppies';
-import './styles/App.css'
+import TheShoppies from '../components/TheShoppies/TheShoppies';
+import './App.css'
 
 export function App() {
   return (

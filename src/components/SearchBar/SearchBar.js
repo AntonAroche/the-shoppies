@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './styles/SearchBar.css'
+import './SearchBar.css'
 import axios from "axios"
 
 const omdbApiUrl = "https://www.omdbapi.com/?apikey=8b01dc14&";

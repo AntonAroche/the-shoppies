@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import SearchBar from './SearchBar'
-import Movie from './Movie'
-import './styles/TheShoppies.css'
+import SearchBar from '../SearchBar/SearchBar'
+import Movie from '../Movie/Movie'
+import './TheShoppies.css'
 import { Modal, Button } from 'react-bootstrap'
 
 export default class TheShoppies extends Component {

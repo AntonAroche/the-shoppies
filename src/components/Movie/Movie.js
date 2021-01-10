@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './styles/Movie.css'
+import './Movie.css'
 
 export default class Movie extends Component {
     handleNomination = () => {
