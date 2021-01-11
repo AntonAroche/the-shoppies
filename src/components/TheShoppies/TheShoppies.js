@@ -9,7 +9,7 @@ export default class TheShoppies extends Component {
     state = {
         searchTerm: "",
         movies: [],
-        nominations: [],
+        nominations: JSON.parse(localStorage.getItem("nominations")) || [],
         showModal: false
     }
 
@@ -27,7 +27,10 @@ export default class TheShoppies extends Component {
 
         this.setState(state => ({
             nominations: [...state.nominations, ...nomination]
-        }), () => { this.checkOpenModal() })
+        }), () => {
+            localStorage.setItem("nominations", JSON.stringify(this.state.nominations))
+            this.checkOpenModal()
+        })
     }
 
     removeNomination = id => {

@@ -9,6 +9,7 @@ Visit the shoppies at https://antonaroche.github.io/the-shoppies/
 
 ## Extra features
 
+* Nominations are saved locally, so the user can leave the page and return to their nominations.
 * Movie posters are displayed along with each movie, so you can easily find the movie you're looking for.
 * Re-styled the app with a theme matching our company palette.
 * After nominating your 5 movies, you can choose to submit them or return to selecting movies. The button to nominate extra movies will be disabled if you have 5 nominations.
