@@ -36,7 +36,9 @@ export default class TheShoppies extends Component {
     removeNomination = id => {
         this.setState(state => ({
             nominations: state.nominations.filter((nom) => nom.imdbID !== id)
-        }))
+        }), () => {
+            localStorage.setItem("nominations", JSON.stringify(this.state.nominations))
+        })
     }
 
     checkOpenModal = () => {
